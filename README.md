@@ -295,21 +295,6 @@ At minimum, you need:
 | `load_balancing` | round_robin | Load balancing strategy: `round_robin` or `fallback` |
 | `request_body_limit` | Axum default (2 MiB) | Maximum request body size in bytes. Can be overridden via REQUEST_BODY_LIMIT environment variable. |
 
-#### Environment variable overrides
-The following environment variables override config file values:
-- PORT
-- LOG_LEVEL
-- REFRESH_INTERVAL_SECS
-- REQUEST_BODY_LIMIT (e.g., 2097152; defaults to Axum's 2 MiB when unset)
-
-Docker example (no Dockerfile patch required):
-```bash
-docker run --rm -p 8900:8900 \
-  -e REQUEST_BODY_LIMIT=2097152 \
-  -v ~/.aicore/config.yaml:/home/acr/.aicore/config.yaml \
-  ghcr.io/iberryful/aicore-router:latest
-```
-
 ### API Keys Configuration
 
 API keys are used to authenticate requests to the router. You can configure multiple API keys to support different users or applications:
